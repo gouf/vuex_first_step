@@ -22,6 +22,9 @@
       mutations: {
         increment(state, payload) {
           state.count += payload;
+        },
+        message(state, payload) {
+          state.message = payload;
         }
       },
       actions: {
