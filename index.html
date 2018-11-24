@@ -24,7 +24,9 @@
 
       },
       getters: {
-
+        message(state) {
+          return state.message.toUpperCase();
+        }
       }
     })
     new Vue({
@@ -36,7 +38,7 @@
       },
       computed: {
         message() {
-          return store.state.message;
+          return store.getters.message;
         }
       }
     })
