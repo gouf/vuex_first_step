@@ -11,12 +11,15 @@
     <h1>{{ welcome }}</h1>
     <h2>{{ message }}</h2>
     <h3>{{ count }}</h3>
+    <h4>{{ inputMessage }}</h4>
     <button @click="pressed">Increment Counter</button>
+    <input type="text" @input="changeMessage" :value='inputMessage'>
   </div>
   <script>
     const store = new Vuex.Store({
       state: {
         message: 'Hello from Vuex',
+        userInputValue: 'foo bar',
         count: 0
       },
       mutations: {
@@ -25,16 +28,25 @@
         },
         message(state, payload) {
           state.message = payload;
-        }
+        },
+        updateMessage(state, message) {
+          state.userInputValue = message
+        },
       },
       actions: {
         increment(state, payload) {
           state.commit('increment', payload)
-        }
+        },
+        updateMessage(state, message) {
+          state.commit('updateMessage', message)
+        },
       },
       getters: {
         message(state) {
           return state.message.toUpperCase();
+        },
+        inputMessage(state) {
+          return state.userInputValue
         },
         counter(state) {
           return state.count
@@ -54,11 +66,17 @@
         },
         count() {
           return store.getters.counter;
+        },
+        inputMessage(e) {
+          return store.getters.inputMessage
         }
       },
       methods: {
         pressed() {
           store.dispatch('increment', 1)
+        },
+        changeMessage(e) {
+          store.dispatch('updateMessage', e.target.value)
         }
       }
     })
