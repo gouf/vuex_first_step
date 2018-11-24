@@ -25,7 +25,9 @@
         }
       },
       actions: {
-
+        increment(state, payload) {
+          state.commit('increment', payload)
+        }
       },
       getters: {
         message(state) {
@@ -53,7 +55,7 @@
       },
       methods: {
         pressed() {
-          store.commit('increment', 1);
+          store.dispatch('increment', 1)
         }
       }
     })
