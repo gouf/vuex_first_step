@@ -8,21 +8,23 @@
 </head>
 <body>
   <div id="app">
-    <h1>{{ welcome }}</h1>
-    <h2>{{ message }}</h2>
-    <h3>{{ count }}</h3>
-    <h4>{{ inputMessage }}</h4>
+    <!-- Fixed message -->
+    <h1>{{ welcome }}</h1> <!-- managed by Vue.js -->
+    <h2>{{ message }}</h2> <!-- managed by Vue.js -->
+    <h3>{{ count }}</h3> <!-- managed by Vuex -->
+    <h4>{{ inputMessage }}</h4> <!-- managed by Vuex -->
     <button @click="pressed">Increment Counter</button>
     <input type="text" @input="changeMessage" :value='inputMessage'>
   </div>
   <script>
+    // Storing Vue properties and change that values from out of the messages.
     const store = new Vuex.Store({
       state: {
         message: 'Hello from Vuex',
         userInputValue: 'foo bar',
         count: 0
       },
-      mutations: {
+      mutations: { // Changes does actually values when called by actions.
         increment(state, payload) {
           state.count += payload;
         },
@@ -53,6 +55,7 @@
         }
       }
     })
+
     new Vue({
       el: '#app',
       data() {
