@@ -9,13 +9,13 @@
 <body>
   <div id="app">
     <h1>{{ welcome }}</h1>
-    <h2></h2>
+    <h2>{{ message }}</h2>
     <h3></h3>
   </div>
   <script>
     const store = new Vuex.Store({
       state: {
-
+        message: 'Hello from Vuex'
       },
       mutations: {
 
@@ -32,6 +32,11 @@
       data() {
         return {
           welcome: 'Hello World'
+        }
+      },
+      computed: {
+        message() {
+          return store.state.message;
         }
       }
     })
