@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script src="https://unpkg.com/vue"></script>
   <title></title>
 </head>
 <body>
-  <h1>Hello</h1>
+  <div id="app">
+    <h1>{{ welcome }}</h1>
+    <h2></h2>
+    <h3></h3>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          welcome: 'Hello World'
+        }
+      }
+    })
+  </script>
 </body>
 </html>
