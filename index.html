@@ -15,7 +15,8 @@
   <script>
     const store = new Vuex.Store({
       state: {
-        message: 'Hello from Vuex'
+        message: 'Hello from Vuex',
+        count: 0
       },
       mutations: {
 
@@ -36,8 +37,7 @@
       el: '#app',
       data() {
         return {
-          welcome: 'Hello World',
-          count: 0
+          welcome: 'Hello World'
         }
       },
       computed: {
